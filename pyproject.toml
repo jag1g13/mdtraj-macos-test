@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "mdt"
+version = "0.0.1"
+description = "Test MDTraj on MacOS"
+authors = ["James Graham <j.graham@soton.ac.uk>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+wheel = "^0.35.1"
+mdtraj = "^1.9.4"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.1.2"
+pylint = "^2.6.0"
+yapf = "^0.30.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

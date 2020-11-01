@@ -63,9 +63,14 @@ class MDTrajSugarTest(unittest.TestCase):
                 print(status)
                 print('\n\n')
 
+                # On failing macos build this succeeds for all 2000 frames
+                # There are only 1000 frames in this trajctory...
+                # These arrays should all have zero as the first dimension once we run out
                 self.assertEqual((1, self.n_atoms, 3), xyz.shape)
                 self.assertEqual((1, 3, 3), box.shape)
                 self.assertEqual((1,), time.shape)
+
+        self.fail()
 
     def test_load_xtc(self):
         with mdtraj.formats.XTCTrajectoryFile(self.xtc_filename) as xtc:

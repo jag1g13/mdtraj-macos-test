@@ -50,6 +50,23 @@ class MDTrajSugarTest(unittest.TestCase):
             self.assertEqual((1001, 3, 3), box.shape)
             self.assertEqual((1001,), time.shape)
 
+    def test_load_2000_frames_individually(self):
+        with mdtraj.formats.XTCTrajectoryFile(self.xtc_filename) as xtc:
+            for i in range(2000):
+                xyz, time, step, box, status = xtc._read(1, None, 1)
+
+                print(i)
+                print(xyz)
+                print(time)
+                print(step)
+                print(box)
+                print(status)
+                print('\n\n')
+
+                self.assertEqual((1, self.n_atoms, 3), xyz.shape)
+                self.assertEqual((1, 3, 3), box.shape)
+                self.assertEqual((1,), time.shape)
+
     def test_load_xtc(self):
         with mdtraj.formats.XTCTrajectoryFile(self.xtc_filename) as xtc:
             traj = xtc.read_as_traj(self.topology)
